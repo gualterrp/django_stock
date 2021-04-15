@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	{% if msgblank %}
+	
+	{{ msgblank }}
+
+	{% endif %}
+
+	{% if api %}
+		{% if api == "Error ..." %}
+
+		There was a problem with the request.
+		Please, try again.
+
+		{% else %}
+		<br>
+		<br>
+<table class="table table-hover table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Company Name</th>
+      <th scope="col">Stock Price</th>
+      <th scope="col">Previous Close</th>
+      <th scope="col">Market Cap</th>
+      <th scope="col">Year to Date Change</th>
+      <th scope="col">52 Week High</th>
+      <th scope="col">52 Week Low</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+       <th scope="row">{{ api.companyName }}</th>
+      <td>{{ api.latestPrice }}</td>
+      <td>{{ api.previousClose }}</td>
+      <td>{{ api.marketCap }}</td>
+      <td>{{ api.ytdChange }}</td>
+      <td>{{ api.week52High }}</td>
+      <td>{{ api.week52Low }}</td>
+    </tr>
+  </tbody>
+		{% endif %}
+	{% endif %}
+
+	
+
+
+{% endblock content %}
